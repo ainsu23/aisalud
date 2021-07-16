@@ -26,7 +26,6 @@
 #' @examples
 #' counter()
 
-
 counter <- function() {
   starting_val <- 0
   counter_fn <- function() {
