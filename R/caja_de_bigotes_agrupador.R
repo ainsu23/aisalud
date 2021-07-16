@@ -13,6 +13,8 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+
+
 caja_de_bigotes_agrupador <- function(data, columnas_sep) {
   data <- copy(data)
   options(warn = -1)
