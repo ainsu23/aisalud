@@ -13,6 +13,15 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Información general de los contratos
+#' @description Recorre la tabla de las notas técnicas suministradas, calcula el
+#' valor mensual del contrato y consolida la información. 
+#' @param x notas técnicas
+#' @param tabla_agrupadores
+#' @return tabla con notas técnicas por departamento
+
+
+
 parse_nt_indice <- function(x, tabla_agrupadores) {
 
   nombres_nt <- names(x)

@@ -13,6 +13,23 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Gráfico de barras
+#' @description Gráfico de barras con la suma de valores por fechas 
+#' seleccionadas
+#'
+#' @param data tabla con información que contenga edades
+#' @param titulo carácter nombre de la columna con los valores
+#' @param columna_numeros variable de segmentación 
+#' @param columna_sep variable de segmentación 
+#' @return Gráfico de barras
+#' @examples
+#' histograma_agrupador(
+#'  data = edades_pacientes,
+#'  columna_numero = "edad",
+#'  columna_sep = segmentacion,
+#'  )
+
+
 grafico_barras_descriptiva <- function(data, columna_numeros, columnas_sep) {
 
   bar_plot <- NULL

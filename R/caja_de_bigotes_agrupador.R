@@ -13,6 +13,11 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Caja de bigotes agrupado
+#' @description Gráfico con caja de bigotes por segmento a agrupar
+#' @param data tabla con información 
+#' @param columna_sep variable de segmentación 
+#' @return gráfica con caja de bigotes
 
 
 caja_de_bigotes_agrupador <- function(data, columnas_sep) {

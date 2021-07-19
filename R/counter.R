@@ -13,18 +13,15 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
-# La función counter permite crear un counter independiente y sandboxed.
-# La funcion devuelve una función la cual al correrse incrementa el valor
-# por 1. 
-
-#' Incrementa por 1 el número guardado por botón (independiente de los otros 
-#' botones de la sesión)
-#'
-#' Está función permite usar el contador en cada botón de la aplicación.
-#' @keywords sandbox
-#' @export
+#' @title Contador independiente 
+#' @description Crea un contador independiente al incrementar el valor por 1. 
+#' @return número incrementado
 #' @examples
-#' counter()
+#' Variable <- counter()
+#' print(variable())
+#' 1
+#' print(variable())
+#' 2
 
 counter <- function() {
   starting_val <- 0

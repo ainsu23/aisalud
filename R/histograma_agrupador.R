@@ -13,6 +13,22 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Histograma de valores por segmentación
+#' @description Gráfico con histograma de valores distribuido por segmentación
+#'
+#' @param data tabla con información que contenga edades
+#' @param titulo caracter nombre de la columna con los valores
+#' @param numero_bins Número entero de edades contenidas en la población
+#' @param columna_sep variable de segmentación 
+#' @return gráfica con histograma
+#' @examples
+#' histograma_agrupador(
+#'  data = edades_pacientes,
+#'  columna_numero = "edad",
+#'  columna_sep = segmentacion,
+#'  numero_bins = numero_bins)
+
+
 histograma_agrupador <- function(data, titulo = "Valor", numero_bins = NULL,
                                  columnas_sep) {
 

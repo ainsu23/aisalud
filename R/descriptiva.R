@@ -13,6 +13,22 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Información descriptiva
+#' @description Calcula información descriptiva de las columnas seleccionadas
+#' @param data Tabla cargada a Análitica integrada
+#' @param columnas agrupador o agrupadaroes para realizar el análisis 
+#' descriptivo
+#' @param columna_valor columna númerica que contiene valores de calculo
+#' @param columna_suma Columna sobre la cual se realiza el análisis
+#' @param prestaciones boolean que define la frecuencia por prestación
+#' @param frec_cantidad boolean que define si es conteo o suma de valores de 
+#' columna_suma
+#' @return lista de tablas con información descriptiva y calculo de valores
+
+
+
+
+
 descriptiva <- function(data, columnas, columna_valor, columna_suma,
                         prestaciones = FALSE, frec_cantidad = FALSE) {
 

@@ -13,6 +13,26 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Tabla de frecuencias por agrupador
+#' @description Calcula tabla de frecuencias de unidad descriptiva por agrupador
+#' @param data tabla cargada a Análitica integrada
+#' @param agrupador Agrupador o agrupadores para calcular la frecuencia
+#' @param columna_fecha Nombre columna de tipo fecha
+#' @param columna_suma Columna sobre la cual se realiza el conteo 
+#' @param intervalo periocidad
+#' @param prestaciones boolean que define la frecuencia por prestación
+#' @param frec_cantidad boolean que define si es conteo o suma de valores de 
+#' columna_suma
+#' @return Tabla con frecuencias
+#' @example frecuencias(
+#'  data = data_episodios,
+#'  agrupador = c(columnas, columna_sep),
+#'  columna_suma = columna_suma,
+#'  prestaciones = FALSE,
+#'  columna_fecha = columna_fecha,
+#'  intervalo = intervalo)
+
+
 frecuencias <- function(
   data, agrupador, columna_fecha, columna_suma,
   intervalo = "mes", prestaciones = FALSE, frec_cantidad = FALSE) {

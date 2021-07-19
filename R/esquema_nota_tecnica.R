@@ -13,6 +13,21 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Esquema nota técnica
+#' @description Calcula resumen nota técnica por agrupador
+#' @param timeseries Tabla serie de tiempo con agrupadores y frecuencias
+#' @param agrupador Agrupador o agrupadores a realizar tabla resumen
+#' @param perfil Perfil guardado por usuario
+#' @param poblacion Población
+#' @return lista con tabla resumen de notas técnicas
+#' @example 
+#' esquema_nota_tecnica(
+#'  timeseries = nota_tecnica$timeseries,
+#'  agrupador = episodios$agrupador,
+#'  perfil = opciones$perfil_selected,
+#'  poblacion = input$poblacion
+#'  )
+
 esquema_nota_tecnica <- function(timeseries, agrupador, perfil = NULL,
   poblacion = 1) {
   if (is.null(poblacion) | is.na(poblacion)) poblacion <- 1

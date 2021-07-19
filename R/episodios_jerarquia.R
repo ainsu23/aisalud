@@ -13,6 +13,30 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+
+#' @title Calculos de episodios por jerarquía
+#' @description Identifica episodios por jerarquia, y calcula descriptivas por
+#' nivel
+#' @param data Tabla cargada a Análitica integrada
+#' @param columnas Agrupador para calculo de frecuencias usando identificación
+#' de episodios
+#' @param columna_valor Columna a realizar los calculos de frecuencias
+#' @param columna_suma Columnas seleccionadas por el usuario para realizar 
+#' calculo de episodios por jerarquía
+#' @param nivel_1 Columna(s) asignada(s) al nivel 1 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_2 Columna(s) asignada(s) al nivel 2 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_3 Columna(s) asignada(s) al nivel 3 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_4 Columna(s) asignada(s) al nivel 4 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param columna_fecha Nombre columna de tipo fecha
+#' @param frec_cantidad boolean que define si es conteo o suma de valores de 
+#' columna_suma
+#' @return Lista con descriptivas por episodios de jerarquías seleccionadas
+
+
 episodios_jerarquia <- function(data, columnas, columna_valor, columna_suma,
                                 columna_sep, nivel_1, nivel_2, nivel_3,
                                 nivel_4, columna_fecha = NULL,

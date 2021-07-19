@@ -13,6 +13,27 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
+#' @title Consolida tablas de frecuencias por jerarquía
+#' @description Consolida tablas de frecuencias agrupadas por episodios y 
+#' determinada por jerarquía 
+#' @param data tabla cargada a Análitica integrada
+#' @param columnas Agrupador o agrupadores para calcular la frecuencia
+#' @param columna_suma Columna sobre la cual se realiza el conteo
+#' @param columna_fecha Columna con fecha de prestación
+#' @param nivel_1 Columna(s) asignada(s) al nivel 1 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_2 Columna(s) asignada(s) al nivel 2 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_3 Columna(s) asignada(s) al nivel 3 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param nivel_4 Columna(s) asignada(s) al nivel 4 en la jerarquía para el 
+#' calculo de frecuencias
+#' @param intervalo periocidad
+#' @param frec_cantidad boolean que define si es conteo o suma de valores de la
+#' columna_suma
+#' @return lista de tablas con frecuencias de niveles
+
+
 frecuencias_jerarquia <- function(data, columnas, columna_suma, columna_fecha,
                                 columna_sep, nivel_1, nivel_2, nivel_3,
                                 nivel_4, intervalo = "mes",
