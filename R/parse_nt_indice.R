@@ -14,9 +14,9 @@
 #
 
 #' @title Información general de los contratos
-#' @description Recorre la tabla de las notas técnicas suministradas, calcula el
-#' valor mensual del contrato y consolida la información. 
-#' @param x notas técnicas
+#' @description Recorre la lista con las notas técnicas suministradas, y las 
+#' convierte en una tabla con información general de los contratos.
+#' @param x Notas técnicas.
 #' @param tabla_agrupadores
 #' @return tabla con notas técnicas por departamento
 
