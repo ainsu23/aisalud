@@ -21,7 +21,7 @@
 #' @param columna_valor Columna numerica que contiene los valores de calculo
 #' @param columna_suma Columna referente a la unidad de conteo de los 
 #' agrupadores
-#' @param columna_explorar Nombre de Columna a realizar descomposición dentro 
+#' @param columna_explorar Nombre de columna a realizar composición dentro 
 #' del episodio
 #' @param prioridad Nombre del episodio que tiene prioridad sobre los otros
 #' servicios dentro del agrupador
