@@ -14,10 +14,10 @@
 #
 
 #' @title Caja de bigotes agrupado
-#' @description Gráfico con caja de bigotes por segmento a agrupar
-#' @param data tabla con información 
-#' @param columna_sep variable de segmentación 
-#' @return gráfica con caja de bigotes
+#' @description Gráfico con caja de bigotes por agrupador
+#' @param data Tabla descriptiva resultante de la función descriptiva.R
+#' @param columna_sep Variable de segmentación 
+#' @return Gráfica plotly de caja de bigotes.
 
 
 caja_de_bigotes_agrupador <- function(data, columnas_sep) {
