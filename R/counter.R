@@ -13,14 +13,15 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
-#' @title Contador independiente 
-#' @description Crea un contador independiente al incrementar el valor por 1. 
-#' @return número incrementado
+#' @title Contador independiente.
+#' @description Crea un contador independiente debido a que incrementa su propio
+#' valor en 1.
+#' @return Función que al ejecutarse aumenta su estado interno por 1.
 #' @examples
 #' Variable <- counter()
-#' print(variable())
+#' print(Variable())
 #' 1
-#' print(variable())
+#' print(Variable())
 #' 2
 
 counter <- function() {
