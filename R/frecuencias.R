@@ -20,7 +20,8 @@
 #' @param agrupador Agrupador o agrupadores para calcular la frecuencia
 #' @param columna_fecha Nombre columna de tipo fecha
 #' @param columna_suma Columna sobre la cual se realiza el conteo 
-#' @param intervalo periocidad diaria o mensual
+#' @param intervalo periocidad diaria o mensual. Digitar "dia" o "mes" en el 
+#' parámetro
 #' @param prestaciones boolean que define el conteo por prestación
 #' @param frec_cantidad boolean que define si es conteo de prestaciones se hará
 #' contando registros o sumando la columna *cantidad*
