@@ -28,11 +28,11 @@
 #' @return tabla resumen con outliers
 #' @examples
 #' outliers_iqr(
-#' data = iris,
-#' columna = "Species",
-#' columna_valor = "Sepal.Length",
-#' percentil = .5,
-#' frecuencia = 1)
+#'  data = iris,
+#'  columna = "Species",
+#'  columna_valor = "Sepal.Length",
+#'  percentil = .5,
+#'  frecuencia = 1)
 
 
 outliers_iqr <- function(data, columna, columna_valor, multiplicativo,
