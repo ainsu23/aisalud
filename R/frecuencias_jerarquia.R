@@ -30,8 +30,7 @@
 #' calculo de frecuencias
 #' @param nivel_4 Columna(s) asignada(s) al nivel 4 en la jerarquía para el 
 #' calculo de frecuencias
-#' @param intervalo periocidad diaria o mensual. Digitar "dia" o "mes" en el 
-#' parámetro
+#' @param intervalo periocidad diaria ("dia") o mensual ("mes").
 #' @param frec_cantidad boolean que define si es conteo de prestaciones se hará
 #' contando registros o sumando la columna *cantidad*
 #' @return lista de tablas con frecuencias de niveles
