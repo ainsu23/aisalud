@@ -15,7 +15,7 @@
 
 #' @title Caja de bigotes agrupado
 #' @description Gráfico con caja de bigotes por agrupador
-#' @param data Tabla descriptiva resultante de la función descriptiva.R
+#' @param data Tabla descriptiva resultante de la función descriptiva
 #' @param columna_sep Variable de segmentación 
 #' @return Gráfica plotly de caja de bigotes.
 
