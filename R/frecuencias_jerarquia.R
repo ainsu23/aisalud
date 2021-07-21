@@ -18,19 +18,21 @@
 #' determinada por jerarquía 
 #' @param data tabla cargada a Análitica integrada
 #' @param columnas Agrupador o agrupadores para calcular la frecuencia
-#' @param columna_suma Columna sobre la cual se realiza el conteo
+#' @param columna_suma Columna sobre la cual se realiza el conteo relacionando 
+#' los episodios seleccionados.
 #' @param columna_fecha Columna con fecha de prestación
 #' @param nivel_1 Columna(s) asignada(s) al nivel 1 en la jerarquía para el 
-#' calculo de frecuencias
+#' calculo de frecuencias. El orden del nivel_1 define la jerarquía de los 
+#' episodios
 #' @param nivel_2 Columna(s) asignada(s) al nivel 2 en la jerarquía para el 
 #' calculo de frecuencias
 #' @param nivel_3 Columna(s) asignada(s) al nivel 3 en la jerarquía para el 
 #' calculo de frecuencias
 #' @param nivel_4 Columna(s) asignada(s) al nivel 4 en la jerarquía para el 
 #' calculo de frecuencias
-#' @param intervalo periocidad
-#' @param frec_cantidad boolean que define si es conteo o suma de valores de la
-#' columna_suma
+#' @param intervalo periocidad diaria o mensual
+#' @param frec_cantidad boolean que define si es conteo de prestaciones se hará
+#' contando registros o sumando la columna *cantidad*
 #' @return lista de tablas con frecuencias de niveles
 
 
