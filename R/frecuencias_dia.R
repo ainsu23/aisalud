@@ -13,16 +13,16 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
-#' @title Tabla de frecuencias por agrupador
+#' @title Tabla de frecuencias diarias por agrupador
 #' @description Calcula tabla agrupada con el conteo de frecuencias por día
 #' @param data tabla cargada a Análitica integrada
 #' @param agrupador Agrupador o agrupadores para calcular la frecuencia
 #' @param columna_fecha Nombre columna de tipo fecha
 #' @param columna_suma Columna sobre la cual se realiza el conteo 
 #' @param prestaciones boolean que define la frecuencia por prestación
-#' @param frec_cantidad boolean que define si es conteo o suma de valores de 
-#' columna_suma
-#' @return Tabla con frecuencias
+#' @param frec_cantidad boolean que define si es conteo de prestaciones se hará
+#' contando registros o sumando la columna *cantidad*
+#' @return Tabla con frecuencias diarias
 #' @example frecuencias_mes(
 #'  data = data_episodios,
 #'  agrupador = c(columnas, columna_sep),
