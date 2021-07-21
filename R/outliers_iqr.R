@@ -20,7 +20,8 @@
 #' @param data tabla con información a analizar
 #' @param columna carácter con la columna a realizar analisis de percentil
 #' @param columna_valor carácter especificando la columna númerica
-#' @param multiplicativo Número de veces que esta alejado del iqr (Q1 o Q3)
+#' @param multiplicativo Número de veces por valor IQR que está alejado de los 
+#' cuartiles 1 y 3 (Q1 o Q3).
 #' @param frecuencia número de veces que se repite el valor columna
 #' @param frec_cantidad boolean para escoger si realizar analisis por frecuencia
 #' o cantidad
