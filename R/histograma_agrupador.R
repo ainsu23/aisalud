@@ -15,17 +15,17 @@
 
 #' @title Histograma de valores por segmentación
 #' @description Gráfico con histograma de valores distribuido por segmentación
-#'
-#' @param data tabla con información que contenga edades
-#' @param titulo caracter nombre de la columna con los valores
-#' @param numero_bins Número entero de edades contenidas en la población
+#' @param data Tabla descriptiva con valores por unidad de conteo por agrupador
+#' @param titulo Nombre de la gráfica
+#' @param numero_bins Número de barras a agrupar el valor
 #' @param columna_sep variable de segmentación 
 #' @return gráfica con histograma
 #' @examples
 #' histograma_agrupador(
-#'  data = edades_pacientes,
-#'  columna_numero = "edad",
-#'  columna_sep = segmentacion,
+#'  titulo = "Histograma",
+#'  data = episodios$tabla[["data"]],
+#'  columnas_sep = episodios$lista_agrupadores[
+#'     input$histograma_agrupador_rows_selected],
 #'  numero_bins = numero_bins)
 
 
