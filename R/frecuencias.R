@@ -14,15 +14,16 @@
 #
 
 #' @title Tabla de frecuencias por agrupador
-#' @description Calcula tabla de frecuencias de unidad descriptiva por agrupador
+#' @description Calcula tabla de frecuencias para diferentes agrupadores por 
+#' diferentes unidades de conteo.
 #' @param data tabla cargada a Análitica integrada
 #' @param agrupador Agrupador o agrupadores para calcular la frecuencia
 #' @param columna_fecha Nombre columna de tipo fecha
 #' @param columna_suma Columna sobre la cual se realiza el conteo 
-#' @param intervalo periocidad
-#' @param prestaciones boolean que define la frecuencia por prestación
-#' @param frec_cantidad boolean que define si es conteo o suma de valores de 
-#' columna_suma
+#' @param intervalo periocidad diaria o mensual
+#' @param prestaciones boolean que define el conteo por prestación
+#' @param frec_cantidad boolean que define si es conteo de prestaciones se hará
+#' contando registros o sumando la columna *cantidad*
 #' @return Tabla con frecuencias
 #' @example frecuencias(
 #'  data = data_episodios,
