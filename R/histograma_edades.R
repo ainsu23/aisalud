@@ -19,7 +19,7 @@
 #' @param data tabla con información que contenga edades
 #' @param columna_numero caracter nombre de la columna con las edades
 #' @param columna_sep variable de segmentación 
-#' @param numero_bins Número entero de edades contenidas en la población
+#' @param numero_bins Número de intervalos de edades
 #' @return Gráfica con histograma
 #' @examples
 #' histograma_edades(
