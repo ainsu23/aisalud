@@ -13,12 +13,13 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
-#' @title Información general de los contratos
+#' @title Información general de los contratos.
 #' @description Recorre la lista con las notas técnicas suministradas, y las 
 #' convierte en una tabla con información general de los contratos.
 #' @param x Notas técnicas.
-#' @param tabla_agrupadores
-#' @return tabla con notas técnicas por departamento
+#' @param tabla_agrupadores tabla con datos de valor de los agrupadores de la 
+#' nota técnica. parse_nt().
+#' @return tabla con información de cada una de las notas técnicas.
 
 
 
