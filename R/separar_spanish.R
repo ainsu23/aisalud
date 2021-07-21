@@ -13,10 +13,10 @@
 # AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) para más detalles.
 #
 
-#' @title Separa palabras con conector y
-#' @description Separa vector de palabras con el conecto de español 'y'
-#' @param word_array vector de palabras
-#' @return variable con texto
+#' @title Separador de palabras en español
+#' @description Separa vector de palabras usando conectores (",", "y") 
+#' @param word_array Vector de palabras
+#' @return Variable con texto
 #' @examples separar_spanish(c("Tom","Jerry","Andrés"))
 #' "Andrés, Jerry y Tom"
 
