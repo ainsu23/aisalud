@@ -15,7 +15,7 @@
 
 #' @title Año_Mes en números
 #' @description Función que recibe caracteres con formato AAAA - nombre mes en
-#' español y devuelve AAAAMM en números
+#' español y devuelve AAAAMM en números. Función inversa a *mes_spanish_juntos*
 #' @param x vector de fechas en formato AAAA - nombre mes español
 #' @return número
 #' @examples
