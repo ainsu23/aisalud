@@ -59,9 +59,15 @@ nota_tecnica_ui <- function(id) {
               DT::dataTableOutput(ns("nota_tecnica_junta"))
             ),
             tabPanel(
-              title = "JSON",
+              title = "JSON Nota ténica",
               shinyAce::aceEditor(
                 ns("nota_tecnica_json")
+              )
+            ),
+            tabPanel(
+              title = "JSON Perfil",
+              shinyAce::aceEditor(
+                ns("nota_tecnica_perfil_json")
               )
             )
           )
@@ -350,9 +356,19 @@ nota_tecnica_server <- function(id, opciones, cache) {
       # Cada vez que se haga un cambio a la nota técnica esta sera parsed a un
       # data.frame
       observe({
-        nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
-          parse_nt()
-      })
+        if (nrow(nota_tecnica$timeseries) > 0) {
+         nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
+           parse_nt() %>% 
+           left_join(
+             nota_tecnica$timeseries %>% ungroup() %>% 
+               select(!!!rlang::syms(episodios$agrupador),
+                      unidad_conteo) %>% distinct() %>% 
+               rename(agrupador = episodios$agrupador)
+           ,by = "agrupador") %>% 
+           relocate(unidad_conteo,agrupador)
+                     
+          }
+        })
 
       observe({
         if (!is.null(nota_tecnica$nota_tecnica$nota_tecnica$poblacion)) {
@@ -601,7 +617,8 @@ nota_tecnica_server <- function(id, opciones, cache) {
               "Costo medio" = "cm",
               "Frecuencia per capita" = "frecuencia_pc",
               "Agrupador" = "agrupador",
-              "Frecuencia a mes" = "frec_mes"
+              "Frecuencia a mes" = "frec_mes",
+              "Unidad de conteo" = "unidad_conteo"
             ),
             extensions = c("FixedColumns"),
             options = list(
