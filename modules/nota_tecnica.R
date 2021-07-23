@@ -66,8 +66,10 @@ nota_tecnica_ui <- function(id) {
             ),
             tabPanel(
               title = "JSON Perfil",
-              shinyAce::aceEditor(
-                ns("nota_tecnica_perfil_json")
+              jsoneditOutput(
+                outputId = ns("nota_tecnica_perfil_json"),
+                height = "630px",
+                width = "100%"
               )
             )
           )
@@ -390,7 +392,42 @@ nota_tecnica_server <- function(id, opciones, cache) {
           )
         }
       })
-
+      
+      observe({
+        if (input$episodios) { 
+        episodios$jerarquia<-
+          list("Perfil" = 
+            list("jerarquia"  = 
+              list(
+               "episodio" = input$episodios_jerarquia_nivel_1_order$text,
+               "factura" = input$episodios_jerarquia_nivel_2_order$text,
+               "paciente" = input$episodios_jerarquia_nivel_3_order$text,
+               "prestacion" = input$episodios_jerarquia_nivel_4_order$text
+              ) %>% purrr::map(purrr::discard,function (x) all(is.na(x)))
+            )
+          )
+      }
+      })
+ 
+      
+      output$nota_tecnica_perfil_json <- renderJsonedit({
+        if (input$episodios &
+            !is.null(input$episodios_jerarquia_nivel_4_order$text)) {
+          jsonedit(
+            listdata = toJSON(x = episodios$jerarquia),
+            language = "es",
+            languages = "es",
+            name = "Perfiles",
+            enableTransform = FALSE,
+            guardar = ns("nota_tecnica_perfil_json"),
+            # Se lee JSONSchema para perfiles
+            schema = read_json("json_schemas/perfiles.json"),
+            # Se lee el template para perfiles
+            templates = read_json("json_schemas/perfiles_template.json")
+          )
+        }
+      })
+      
       # Se crea un subset de la serie de tiempo generada por los datos
       # para el agrupador seleccionado
       observe({
