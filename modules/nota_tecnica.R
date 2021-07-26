@@ -66,10 +66,8 @@ nota_tecnica_ui <- function(id) {
             ),
             tabPanel(
               title = "JSON Perfil",
-              jsoneditOutput(
-                outputId = ns("nota_tecnica_perfil_json"),
-                height = "630px",
-                width = "100%"
+              shinyAce::aceEditor(
+                ns("nota_tecnica_perfil_json")
               )
             )
           )
@@ -360,17 +358,16 @@ nota_tecnica_server <- function(id, opciones, cache) {
       observe({
         if (nrow(nota_tecnica$timeseries) > 0) {
          nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
-           parse_nt() %>% 
-           left_join(
-             nota_tecnica$timeseries %>% ungroup() %>% 
-               select(!!!rlang::syms(episodios$agrupador),
-                      unidad_conteo) %>% distinct() %>% 
-               rename(agrupador = episodios$agrupador)
-           ,by = "agrupador") %>% 
-           relocate(unidad_conteo,agrupador)
-                     
-          }
-        })
+          parse_nt() %>% 
+          left_join(
+           nota_tecnica$timeseries %>% ungroup() %>% 
+            select(!!!rlang::syms(episodios$agrupador), unidad_conteo) %>% 
+            distinct() %>% 
+            rename(agrupador = episodios$agrupador)
+          ,by = "agrupador") %>% 
+          relocate(unidad_conteo,agrupador)
+        }
+      })
 
       observe({
         if (!is.null(nota_tecnica$nota_tecnica$nota_tecnica$poblacion)) {
@@ -394,40 +391,30 @@ nota_tecnica_server <- function(id, opciones, cache) {
       })
       
       observe({
-        if (input$episodios) { 
-        episodios$jerarquia<-
-          list("Perfil" = 
-            list("jerarquia"  = 
-              list(
-               "episodio" = input$episodios_jerarquia_nivel_1_order$text,
-               "factura" = input$episodios_jerarquia_nivel_2_order$text,
-               "paciente" = input$episodios_jerarquia_nivel_3_order$text,
-               "prestacion" = input$episodios_jerarquia_nivel_4_order$text
-              ) %>% purrr::map(purrr::discard,function (x) all(is.na(x)))
-            )
+        if (input$exe) { 
+          updateAceEditor(
+            session = session,
+            "nota_tecnica_perfil_json",
+            value = toJSON(
+             x = 
+              list("Perfil" = 
+                list("jerarquia"  = 
+                  list(
+                   "episodio" = input$episodios_jerarquia_nivel_1_order$text,
+                   "factura" = input$episodios_jerarquia_nivel_2_order$text,
+                   "paciente" = input$episodios_jerarquia_nivel_3_order$text,
+                   "prestacion" = input$episodios_jerarquia_nivel_4_order$text
+                   ) %>% 
+                   purrr::map(purrr::discard,function (x) all(is.na(x)))
+                  )
+                ),
+              pretty = TRUE,
+              auto_unbox=TRUE),
+            mode = "json"
           )
       }
-      })
+      }) %>% bindEvent(input$exe)
  
-      
-      output$nota_tecnica_perfil_json <- renderJsonedit({
-        if (input$episodios &
-            !is.null(input$episodios_jerarquia_nivel_4_order$text)) {
-          jsonedit(
-            listdata = toJSON(x = episodios$jerarquia),
-            language = "es",
-            languages = "es",
-            name = "Perfiles",
-            enableTransform = FALSE,
-            guardar = ns("nota_tecnica_perfil_json"),
-            # Se lee JSONSchema para perfiles
-            schema = read_json("json_schemas/perfiles.json"),
-            # Se lee el template para perfiles
-            templates = read_json("json_schemas/perfiles_template.json")
-          )
-        }
-      })
-      
       # Se crea un subset de la serie de tiempo generada por los datos
       # para el agrupador seleccionado
       observe({
