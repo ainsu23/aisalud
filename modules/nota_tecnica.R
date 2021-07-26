@@ -300,16 +300,16 @@ nota_tecnica_server <- function(id, opciones, cache) {
       # data.frame
       observe({
         if (nrow(nota_tecnica$timeseries) > 0) {
-        nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
-          parse_nt() %>% 
-          left_join(
-            x = nota_tecnica$timeseries %>% 
-              ungroup() %>% 
-              select(!!!rlang::syms(episodios$agrupador), unidad_conteo) %>%
-              distinct() %>% 
-              rename(agrupador = episodios$agrupador),
-            by = "agrupador") %>% 
-          relocate(unidad_conteo, agrupador)
+          nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
+            parse_nt() %>% 
+            left_join(
+              x = nota_tecnica$timeseries %>% 
+                ungroup() %>% 
+                select(!!!rlang::syms(episodios$agrupador), unidad_conteo) %>%
+                distinct() %>% 
+                rename(agrupador = episodios$agrupador),
+              by = "agrupador") %>% 
+            relocate(unidad_conteo, agrupador)
         }
       })
 
