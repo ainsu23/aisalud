@@ -300,15 +300,16 @@ nota_tecnica_server <- function(id, opciones, cache) {
       # data.frame
       observe({
         if (nrow(nota_tecnica$timeseries) > 0) {
-         nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
+        nota_tecnica$parsed <- nota_tecnica$nota_tecnica %>%
           parse_nt() %>% 
           left_join(
-           nota_tecnica$timeseries %>% ungroup() %>% 
-            select(!!!rlang::syms(episodios$agrupador), unidad_conteo) %>% 
-            distinct() %>% 
-            rename(agrupador = episodios$agrupador)
-          ,by = "agrupador") %>% 
-          relocate(unidad_conteo,agrupador)
+            x = 
+              nota_tecnica$timeseries %>% ungroup() %>% 
+              select(!!!rlang::syms(episodios$agrupador), unidad_conteo) %>% 
+              distinct() %>% 
+              rename(agrupador = episodios$agrupador),
+            by = "agrupador") %>% 
+          relocate(unidad_conteo, agrupador)
         }
       })
 
@@ -334,28 +335,25 @@ nota_tecnica_server <- function(id, opciones, cache) {
       })
       
       observe({
-        if (input$exe) { 
-          updateAceEditor(
-            session = session,
-            "nota_tecnica_perfil_json",
-            value = toJSON(
-             x = 
+        updateAceEditor(
+          session = session,
+          "nota_tecnica_perfil_json",
+          value = toJSON(
+            x = 
               list("Perfil" = 
                 list("jerarquia"  = 
                   list(
-                   "episodio" = input$episodios_jerarquia_nivel_1_order$text,
-                   "factura" = input$episodios_jerarquia_nivel_2_order$text,
-                   "paciente" = input$episodios_jerarquia_nivel_3_order$text,
-                   "prestacion" = input$episodios_jerarquia_nivel_4_order$text
-                   ) %>% 
-                   purrr::map(purrr::discard,function (x) all(is.na(x)))
-                  )
-                ),
-              pretty = TRUE,
-              auto_unbox=TRUE),
-            mode = "json"
-          )
-      }
+                    "episodio" = input$episodios_jerarquia_nivel_1_order$text,
+                    "factura" = input$episodios_jerarquia_nivel_2_order$text,
+                    "paciente" = input$episodios_jerarquia_nivel_3_order$text,
+                    "prestacion" = input$episodios_jerarquia_nivel_4_order$text
+                    ) %>% 
+                  purrr::map(purrr::discard,function (x) all(is.na(x)))
+                )
+              ),
+            pretty = TRUE,
+            auto_unbox=TRUE),
+            mode = "json")
       }) %>% bindEvent(input$exe)
  
       # Se crea un subset de la serie de tiempo generada por los datos
@@ -604,7 +602,7 @@ nota_tecnica_server <- function(id, opciones, cache) {
         if (nrow(nota_tecnica$parsed) > 0) {
           datatable(
             data = nota_tecnica$parsed %>%
-              select(-nt),
+              select(-c(nt, frec_mes_min, frec_mes_max)),
             rownames = FALSE,
             colnames = c(
               "Valor a mes" = "valor_mes",
