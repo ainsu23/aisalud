@@ -75,6 +75,11 @@ seguimiento_ui <- function(id) {
           withSpinner(),
         tags$hr(),
         tags$br(),
+        tags$h4("Contrato por defecto"),
+        DT::dataTableOutput(ns("contrato_defecto")) %>%
+          withSpinner(),
+        tags$hr(),
+        tags$br(),
         tabsetPanel(
           tabPanel(
             title = "Resultados frecuencias",
@@ -513,7 +518,6 @@ seguimiento_server <- function(id, opciones, cache) {
     
     observe({
       if (nrow(episodios$comparar_nt) > 0) {
-
         episodios$frecs_efectiva <- episodios$comparar_nt %>%
           group_by(agrupador) %>%
           arrange(mes_anio_num) %>%
@@ -526,10 +530,16 @@ seguimiento_server <- function(id, opciones, cache) {
       }
     })
 
+    output$contrato_defecto <- DT::renderDataTable({
+      if (nrow(episodios$frecs_efectiva) > 0 & episodios$sum_limites == 0){
+        print(episodios$frecs_pagador)
+        print(episodios$frecs_efectiva)
+        print(episodios$frecs_ajuste)
+      }
+    })
+    
     output$frecs_efectiva <- DT::renderDataTable({
-      if (nrow(episodios$frecs_efectiva) > 0 & episodios$sum_limites > 0) {
-        print(class(episodios$sum_limites))
-        print(episodios$sum_limites)
+      if (nrow(episodios$frecs_efectiva) > 0) {
         episodios$frecs_efectiva %>%
           datatable(
             colnames = c(
@@ -572,7 +582,7 @@ seguimiento_server <- function(id, opciones, cache) {
     })
 
     output$frecs_pagador <- DT::renderDataTable({
-      if (nrow(episodios$frecs_pagador) > 0 & episodios$sum_limites > 0) {
+      if (nrow(episodios$frecs_pagador) > 0) {
         episodios$frecs_pagador %>%
           datatable(
             colnames = c(
@@ -613,7 +623,7 @@ seguimiento_server <- function(id, opciones, cache) {
     })
 
     output$frecs_ajuste <- DT::renderDataTable({
-      if (nrow(episodios$frecs_ajuste) > 0 & episodios$sum_limites > 0) {
+      if (nrow(episodios$frecs_ajuste) > 0) {
         episodios$frecs_ajuste %>%
           datatable(
             colnames = c(
