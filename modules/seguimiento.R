@@ -223,10 +223,11 @@ seguimiento_server <- function(id, opciones, cache) {
           
           tryCatch(
             expr = {
-              episodios$descriptiva <- episodios$descriptiva %>%
-              descriptiva_timeseries(agrupador = c(agrupador))  
-            },error = function(e) {
-              purrr::map(e, print)
+              episodios$descriptiva <- episodios$descriptiva %>% 
+                descriptiva_timeseries(agrupador = c(agrupador))  
+            },
+            error = function(e) {
+              purrr::map(e, message)
               showNotification(
                 "Error: El rango de fecha seleccionado es invalido."
               )
