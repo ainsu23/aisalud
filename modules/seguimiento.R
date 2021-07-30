@@ -518,6 +518,10 @@ seguimiento_server <- function(id, opciones, cache) {
     
     observe({
       if (nrow(episodios$comparar_nt) > 0) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b861d9bfeab0f7ecff73b5ca8522cfd675c3d4ae
         episodios$frecs_efectiva <- episodios$comparar_nt %>%
           group_by(agrupador) %>%
           arrange(mes_anio_num) %>%
@@ -539,7 +543,9 @@ seguimiento_server <- function(id, opciones, cache) {
     })
     
     output$frecs_efectiva <- DT::renderDataTable({
-      if (nrow(episodios$frecs_efectiva) > 0) {
+      if (nrow(episodios$frecs_efectiva) > 0 & episodios$sum_limites > 0) {
+        print(class(episodios$sum_limites))
+        print(episodios$sum_limites)
         episodios$frecs_efectiva %>%
           datatable(
             colnames = c(
@@ -582,7 +588,7 @@ seguimiento_server <- function(id, opciones, cache) {
     })
 
     output$frecs_pagador <- DT::renderDataTable({
-      if (nrow(episodios$frecs_pagador) > 0) {
+      if (nrow(episodios$frecs_pagador) > 0 & episodios$sum_limites > 0) {
         episodios$frecs_pagador %>%
           datatable(
             colnames = c(
@@ -623,7 +629,7 @@ seguimiento_server <- function(id, opciones, cache) {
     })
 
     output$frecs_ajuste <- DT::renderDataTable({
-      if (nrow(episodios$frecs_ajuste) > 0) {
+      if (nrow(episodios$frecs_ajuste) > 0 & episodios$sum_limites > 0) {
         episodios$frecs_ajuste %>%
           datatable(
             colnames = c(
