@@ -350,7 +350,10 @@ seguimiento_server <- function(id, opciones, cache) {
     output$nota_tecnica <- DT::renderDataTable({
       if (nrow(episodios$nt_current) > 0) {
         datatable(
-          episodios$nt_current,
+          episodios$nt_current %>% 
+            mutate(num_meses = episodios$comparar_nt %>% ungroup() %>% 
+                      select(mes_anio_num) %>% distinct() %>% nrow(),
+              Valor_contratado = num_meses * valor_mes),
           colnames = c(
             "Nota técnica" = "cod_nt",
             "Agrupador" = "agrupador",
@@ -359,7 +362,9 @@ seguimiento_server <- function(id, opciones, cache) {
             "Frecuencia per capita" = "frecuencia_pc",
             "Valor mes" = "valor_mes",
             "Límite inferior" = "frec_mes_min",
-            "Límite superior" = "frec_mes_max"),
+            "Límite superior" = "frec_mes_max",
+            "Número meses" = "num_meses",
+            "Valor contratado por nota técnica" = "Valor_contratado"),
         rownames = FALSE,
         selection = "none",
         extensions = c("FixedColumns"),
@@ -388,7 +393,7 @@ seguimiento_server <- function(id, opciones, cache) {
           sum(episodios$comparar_nt$valor_ejecutado_cm)
         valor_ejecutado_fac <-
           sum(episodios$comparar_nt$Suma, na.rm = TRUE)
-
+        
         totales <- list(
           "Valor a ejecutar:" = formatAsCurrency(valor_contratado),
           "Valor ejecutado con frecuencia:" =
