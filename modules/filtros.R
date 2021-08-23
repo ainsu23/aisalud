@@ -23,7 +23,7 @@ filtros_ui <- function(id) {
         column(
           width = 5,
           tags$h3("Variables"),
-          tags$h4("Variables")
+          tags$h4("Filtros discretos")
         ),
         column(
           width = 2
@@ -45,8 +45,8 @@ filtros_ui <- function(id) {
         filtro_discreto_ui_insert(ns = ns, n = 1),
       ),
       tags$hr(),
-      tags$h4("Rangos"),
-      tags$h5("variables cuantitativas"),
+      tags$h4("Rangos numéricos"),
+      tags$h5("Variables cuantitativas"),
       actionGroupButtons(
         inputIds = ns(c("filtros_num_add", "filtros_num_rm")),
         labels = c("+", "-"),
@@ -57,7 +57,7 @@ filtros_ui <- function(id) {
         filtro_numerico_ui_insert(ns = ns, n = 1),
       ),
       tags$hr(),
-      tags$h4("Eventos"),
+      tags$h4("Eventos y pacientes"),
       filtros_outliers_ui_fila(ns),
       filtros_eventos_ui_fila(ns),
       actionButton(ns("aplicar_filtros"), "Aplicar")

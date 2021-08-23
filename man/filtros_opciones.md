@@ -25,7 +25,7 @@ NOTA: La aplicación permite adicionar hasta 20 filtros.
 Para aplicar filtros se debe hacer clic en el botón **Aplicar** una vez se
 tengan seleccionados todos los parámetros deseados.
 
-### Variables
+### Filtros discretos
 
 Para hacer un filtro se debe identificar la columna a filtrar. Una vez 
 seleccionada, se podrán buscar y seleccionar los valores en la casilla de la 
@@ -34,13 +34,13 @@ misma fila en la columna valores. Por último, si el estado del filtro está en
 seleccionados. Si el estado del filtro está en **Excluir** solo se tomarán 
 en cuenta registros que no incluyan los valores seleccionados.
 
-### Rangos - Variables cuantitativas
+### Rangos numéricos
 
 Con el fin de brindar rápidez en los filtros de variables cuantitativas, se 
 debe digitar en las sub-columnas el valor **Mínimo** y **Máximo** a filtrar. 
 Solo se tomarán en cuenta registros con valores dentro de este rango.
 
-## Eventos
+## Eventos y pacientes
 ### Outliers
 Registros seleccionados en el modulo __outliers__, los registros serán 
 visualizados cuando en el modulo outliers se presione el botón "excluir 
