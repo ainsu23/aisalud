@@ -220,6 +220,13 @@ descriptiva_ui <- function(id) {
                 )
               )
             )
+          ),
+          tabPanel(
+            title = "Resumen por paciente",
+            tags$br(),
+            DT::dataTableOutput(
+              outputId = ns("resumen_paciente")
+            )
           )
         )
       )
@@ -590,6 +597,32 @@ descriptiva_server <- function(id, opciones, cache, conn) {
               formatStyle(TRUE, fontSize = '95%', backgroundColor = 'white')
           }
         })
+
+
+      output$resumen_paciente <- DT::renderDataTable({
+        if (nrow(episodios$tabla[["descriptiva"]]) != 0) {
+        agrupador <- input$agrupador
+        opciones_tabla <- data.frame(opciones$tabla) #%>%
+          #           parps::definir_cantidad(cantidad = cantidad)
+
+        DT::datatable(
+        opciones_tabla %>%
+          parps::agrupar(nro_identificacion, !!rlang::sym(agrupador)) %>%
+          parps::describir(valor = cantidad),
+        options = list(
+          language = list(
+            url = dt_spanish),
+          pageLength = 10000,
+          dom = 'ftp',
+          autoWidth = FALSE,
+          ordering = TRUE,
+          scrollX = TRUE,
+          scrollY = "370px"),
+        rownames = FALSE) %>%
+        formatStyle(TRUE, fontSize = '95%', backgroundColor = 'white')
+        }
+
+      })
 
       output$histograma_titulo <- renderText({
         "Histograma de valores"
